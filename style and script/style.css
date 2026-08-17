@@ -1,0 +1,305 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-y: scroll;     
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+}
+
+.top {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20dvh;
+    flex: 1 1 auto;
+}
+
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn button {
+    flex: 0 1 auto;
+    margin: 0.5rem 1rem;
+    padding: 0.8rem 2rem;
+    border: none;
+    background-color: white;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn button:hover {
+    transform: translateY(-4px);
+    background: #e6e6e6;
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
+}
+
+.btn button:active {
+    transform: translateY(-1px);
+    transition-duration: 0.08s;
+}
+
+.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-height: 75dvh;
+    padding: 2rem;
+}
+
+.text {
+    margin-bottom: 20vh;
+    padding: 1rem;
+    max-width: 900px;
+    z-index: 1;
+}
+
+.text h1 {
+    font-size: clamp(1.8rem, 6vw, 4.2rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 1.2rem);
+    animation: slideLeft 1s ease-in-out;
+    letter-spacing: -0.02em;
+}
+
+.text p {
+    text-align: end;
+    max-width: 80%;
+    margin-left: auto;
+    font-size: clamp(1rem, 1.8vw, 1.4rem);
+    line-height: 1.7;
+    animation: slideRight 1s cubic-bezier(.83,-0.06,.4,.97);
+}
+
+@keyframes slideLeft {
+    0% { transform: translateX(-120%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+    0% { transform: translateX(120%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
+.abt {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+    padding: 4rem 2rem;
+}
+
+.about h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.abt1 {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    font-size: clamp(1rem, 1.6vw, 1.3rem);
+}
+
+.abt1 h1 {
+    padding-bottom: 1.5rem;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+}
+
+.para1,
+.para2 {
+    padding: 1.5rem;
+    background: #fafafa;
+    border-radius: 1.5rem;
+    transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.para1:hover,
+.para2:hover {
+    background: #f2f2f2;
+    transform: scale(1.01);
+}
+
+.skill-container {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    margin: 2dvw;
+    transform: translateX(-50vw);
+    opacity: 0.2;
+    transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 1.2s ease;
+}
+
+.card-container.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+@keyframes appear {
+    0% { opacity: 0; scale: 0.8; }
+    100% { opacity: 1; scale: 1; }
+}
+
+.card {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 30vh;
+    border: 2px solid #1a1a1a;
+    border-radius: 1.5rem;
+    background: #ffffff;
+    padding: 2rem;
+    min-height: 30vh;
+    max-height: 50vh;
+    justify-content: center;
+    align-items: center;
+    cursor: crosshair;
+    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
+    border-color: #555;
+}
+
+.card h3 {
+    font-size: clamp(1.4rem, 3vw, 2.6rem);
+    margin-bottom: 0.5rem;
+}
+
+.card button {
+    padding: 0.7rem 1.8rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 3rem;
+    background: #f0f8ff;
+    font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+    font-weight: 500;
+    cursor: crosshair;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card button:hover {
+    transform: translateY(-4px);
+    background: #e0f0ff;
+    box-shadow: 0 8px 16px -6px rgba(0, 0, 0, 0.12);
+}
+
+.card button:active {
+    transform: translateY(2px);
+    transition-duration: 0.08s;
+}
+
+.contact {
+    min-height: 100dvh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+}
+
+.call {
+    align-items: center;
+    text-align: center;
+    font-size: clamp(1.8rem, 5vw, 4rem);
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, #ffffff 60%, #f8f8f8 100%);
+    color: #000;
+}
+
+.mail {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem 0 6rem;
+}
+
+.btn1 {
+    flex: 0 1 auto;
+    padding: 0.8rem 2.2rem;
+    border: none;
+    border-radius: 3rem;
+    background: #1a1a1a;
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.btn1:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: #333;
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.25);
+}
+
+.btn1:active {
+    transform: translateY(-1px);
+    transition-duration: 0.08s;
+}
+
+@media (max-width: 640px) {
+    .text p {
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .btn button,
+    .btn1 {
+        padding: 0.6rem 1.2rem;
+        margin: 0.25rem;
+    }
+
+    .navbar {
+        margin-top: 2vh;
+        min-height: 12dvh;
+    }
+}
