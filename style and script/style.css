@@ -55,8 +55,8 @@ body {
 }
 
 .btn button:hover {
+    background-position: 0% 0%;
     transform: translateY(-4px);
-    background: #e6e6e6;
     box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.15);
 }
 
@@ -76,15 +76,12 @@ body {
 }
 
 .text {
-    margin-bottom: 20vh;
-    padding: 1rem;
     max-width: 900px;
     z-index: 1;
 }
 
 .text h1 {
     font-size: clamp(1.8rem, 6vw, 4.2rem);
-    margin-bottom: clamp(0.5rem, 1.5vw, 1.2rem);
     animation: slideLeft 1s ease-in-out;
     letter-spacing: -0.02em;
 }
@@ -109,43 +106,65 @@ body {
 }
 
 .abt {
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    min-height: 100dvh;
-    padding: 4rem 2rem;
-}
-
-.about h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 2rem;
-    text-align: center;
-    letter-spacing: -0.02em;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .abt1 {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 4rem;
     font-size: clamp(1rem, 1.6vw, 1.3rem);
 }
 
 .abt1 h1 {
-    padding-bottom: 1.5rem;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
     font-size: clamp(1.6rem, 4vw, 3rem);
 }
 
-.para1,
-.para2 {
+.para1 {
+    transform: translateX(40dvw);
+    opacity: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
     padding: 1.5rem;
-    background: #fafafa;
+    background: #ffffff;
     border-radius: 1.5rem;
-    transition: background 0.4s ease, transform 0.4s ease;
+    transition: 1.5s ease;
+    
 }
 
-.para1:hover,
-.para2:hover {
-    background: #f2f2f2;
-    transform: scale(1.01);
+.para2 {
+    transform: translateX(-40dvw);
+    opacity: 0;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 1.5rem;
+    transition: 1.5s ease;
+}
+
+.para1.show, .para2.show {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 .skill-container {
@@ -180,6 +199,8 @@ body {
 }
 
 .card {
+    transform-style: preserve-3d;
+    will-change: transform;
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
@@ -193,11 +214,10 @@ body {
     justify-content: center;
     align-items: center;
     cursor: crosshair;
-    transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-    transform: translateY(-12px) scale(1.02);
     box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2);
     border-color: #555;
 }
@@ -255,30 +275,6 @@ body {
     justify-content: center;
     gap: 1rem;
     padding: 1rem 0 6rem;
-}
-
-.btn1 {
-    flex: 0 1 auto;
-    padding: 0.8rem 2.2rem;
-    border: none;
-    border-radius: 3rem;
-    background: #1a1a1a;
-    color: #fff;
-    font-weight: 600;
-    font-size: clamp(0.9rem, 1.4vw, 1.2rem);
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-
-.btn1:hover {
-    transform: translateY(-4px) scale(1.03);
-    background: #333;
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.25);
-}
-
-.btn1:active {
-    transform: translateY(-1px);
-    transition-duration: 0.08s;
 }
 
 @media (max-width: 640px) {

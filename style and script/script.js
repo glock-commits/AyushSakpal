@@ -14,6 +14,8 @@ elementsToObserve.forEach(el => observer.observe(el));
 
 const navButtons = document.querySelectorAll('.navbar button');
 
+VanillaTilt.init(document.querySelectorAll(".card"));
+
 navButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const targetId = button.id;
