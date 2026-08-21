@@ -8,7 +8,7 @@ const observer = new IntersectionObserver ((entries)=>{
         };
     });
 });
-const elementsToObserve = document.querySelectorAll(".para1, .card-container, .para2, #card1, #card2"
+const elementsToObserve = document.querySelectorAll(".para1, .card-container, .para2"
 );
 elementsToObserve.forEach(el => observer.observe(el));
 
