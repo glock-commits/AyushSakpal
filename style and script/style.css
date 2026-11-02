@@ -16,6 +16,12 @@ body {
   line-height: 1.6;
 }
 
+.horizontal-container {
+  display: flex;
+  width: 300svw;
+  height: auto;
+}
+
 .top {
   scroll-snap-align: start;
   scroll-snap-stop: always;
