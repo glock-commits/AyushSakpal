@@ -28,14 +28,15 @@ body {
 
 .canvas-container {
   position: absolute;
-  inset: 0;              
+  inset: 0; 
+  display: flex;
+  align-items: center;             
   pointer-events: none;
   z-index: 0;
 }
 
 .hand {
-  position: absolute;       
-  top: 50%;
+  position: absolute;
   width: clamp(140px, 40vw, 600px);
   height: auto;
   image-rendering: pixelated;
@@ -44,13 +45,14 @@ body {
 }
 
 .left-hand {
-  
+  margin-top: 5rem;
   left: 0;
 }
 
 .right-hand {
   right: 0;
 }
+
 
 .btn {
   font-family: "Redaction 50", sans-serif;
@@ -196,10 +198,30 @@ body {
   overflow: hidden;
 }
 
-.abt-section {
+.abt-section1 {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  overflow: hidden;
+}
+
+.abt-section1 h1 {
+  margin-right: 10dvw;
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 8rem);
+}
+
+.icon {
+  width: clamp(160px, 40vw, 720px);
+  height: auto;
+  flex-shrink: 0;
+  display: block;
+    padding: 0
 }
 
 .para1,

@@ -1,6 +1,6 @@
 VanillaTilt.init(document.querySelectorAll(".card"));
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, TextPlugin, SplitText, ScrambleTextPlugin);
+gsap.registerPlugin(CustomEase, ScrollTrigger, ScrollToPlugin, TextPlugin, SplitText, ScrambleTextPlugin);
 
 let splitH1 = new SplitText(".text h1", { type: "chars" });
 let splitP = new SplitText(".text p", { type: "chars" });
@@ -24,7 +24,7 @@ tl.from(".right-hand", {
 .from(".btn", {
   duration: 1,
   x: "-100%",
-  ease: 'expo.out',
+  ease: "expo.out"
 }, "<")
 
 .from(".btn1", {
@@ -34,7 +34,7 @@ tl.from(".right-hand", {
 }, "<")
 
 .to(".text h1", {
-  duration: 2,
+  duration: 1,
   scrambleText: {
     text: "Hi, I'm Glock",
     chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -44,7 +44,7 @@ tl.from(".right-hand", {
 })
 
 .to(".text p", {
-  duration: 1.2,
+  duration: 1.5,
   scrambleText: {
     text: "I build stuff",
     chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -62,3 +62,24 @@ gsap.from(".card", {
   opacity: "0",
   stagger : "0.3"
 })
+
+gsap.from(".icon", {
+  scrollTrigger: {
+    trigger:".icon",
+    toggleActions: "play reverse play reverse"
+  },
+  x: "-40%",
+  duration: "2",
+  ease: "elastic.out(1,0.3)"
+})
+
+gsap.from(".hab", {
+  scrollTrigger: {
+    trigger:".icon",
+    toggleActions: "play reverse play reverse"
+  },
+  x: "-100%",
+  duration: "1.3",
+  ease: "elastic.out(1,0.5)"
+});
+
