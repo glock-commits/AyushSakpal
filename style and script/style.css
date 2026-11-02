@@ -21,7 +21,7 @@ body {
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100svh;
   width: 100%;
   position: relative;
 }
@@ -189,7 +189,7 @@ body {
 .abt-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 100dvh;
+  min-height: 100svh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -201,7 +201,7 @@ body {
 .abt-section1 {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 100dvh;
+  min-height: 100svh;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -234,7 +234,7 @@ body {
 .skill-container {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
 }
@@ -306,7 +306,7 @@ body {
 }
 
 .contact {
-  min-height: 100dvh;
+  min-height: 100svh;
   align-items: center;
   justify-content: center;
   display: flex;

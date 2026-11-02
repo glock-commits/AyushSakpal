@@ -11,47 +11,61 @@ tl.from(".right-hand", {
   duration: 2,
   rotation: "45",
   x: "100%",
-  ease: "eastic.out"
 })
 
-.from(".left-hand", {
-  duration: 2,
-  rotation: "-45",
-  x: "-100%",
-  ease: "eastic.out"
-}, "<")
+  .from(
+    ".left-hand",
+    {
+      duration: 2,
+      rotation: "-45",
+      x: "-100%",
+    },
+    "<",
+  )
 
-.from(".btn", {
-  duration: 1,
-  x: "-100%",
-  ease: "expo.out"
-}, "<")
+  .from(
+    ".btn",
+    {
+      duration: 1.5,
+      opacity: 0,
+      ease: "expo.out",
+    },
+    "<",
+  )
 
-.from(".btn1", {
-  duration: 1,
-  x: "100%",
-  ease: "expo.out",
-}, "<")
+  .from(
+    ".btn1",
+    {
+      duration: 1.5,
+      opacity: 0,
+      ease: "expo.out",
+    },
+    "<",
+  )
 
-.to(".text h1", {
-  duration: 1,
-  scrambleText: {
-    text: "Hi, I'm Glock",
-    chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    speed: 0.5,
-    revealDelay: 0.1
-  }
-})
+  .to(".text h1", {
+    duration: 1,
+    scrambleText: {
+      text: "Hi, I'm Glock",
+      chars: "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ",
+      speed: 0.5,
+      revealDelay: 0.1,
+    },
+  })
 
-.to(".text p", {
-  duration: 1.5,
-  scrambleText: {
-    text: "I build stuff",
-    chars: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    speed: 0.3,
-    revealDelay: 0.5
-  }
-}, "-=0.6");
+  .to(
+    ".text p",
+    {
+      duration: 1.5,
+      scrambleText: {
+        text: "I build stuff",
+        chars: "αβγδεζηθικλμνξοπρστυφχψω",
+        speed: 0.3,
+        revealDelay: 0.5,
+      },
+    },
+    "-=0.6",
+  );
 
 gsap.from(".card", {
   scrollTrigger: {
