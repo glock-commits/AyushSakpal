@@ -89,22 +89,23 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   gsap.from(".icon", {
     scrollTrigger: {
-      trigger: ".icon",
+      trigger: ".abt-section1",
       toggleActions: "play reverse play reverse",
     },
-    x: "-100%",
-    duration: "0.5",
-    ease: "expo.out)",
+    x: "-150",
+    duration: "1",
+    ease: "expo.out",
   });
 
   gsap.from(".hab", {
     scrollTrigger: {
-      trigger: ".hab",
+      trigger: ".abt-section1",
       toggleActions: "play reverse play reverse",
     },
-    x: "-200%",
+    x: "-150",
     duration: "1",
     ease: "expo.out",
+    delay: 0.1
   });
 
   VanillaTilt.init(document.querySelectorAll(".card"));

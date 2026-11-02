@@ -9,17 +9,13 @@
 html {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: "Redaction 50", sans-serif;
   line-height: 1.6;
-}
-
-.horizontal-container {
-  display: flex;
-  width: 300svw;
-  height: auto;
+  height: 100%;
 }
 
 .top {
@@ -34,9 +30,9 @@ body {
 
 .canvas-container {
   position: absolute;
-  inset: 0; 
+  inset: 0;
   display: flex;
-  align-items: center;             
+  align-items: center;
   pointer-events: none;
   z-index: 0;
 }
@@ -58,7 +54,6 @@ body {
 .right-hand {
   right: 0;
 }
-
 
 .btn {
   font-family: "Redaction 50", sans-serif;
@@ -210,10 +205,10 @@ body {
   min-height: 100svh;
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 2rem;
   overflow: hidden;
+  padding: 2rem;
 }
 
 .abt-section1 h1 {
@@ -227,7 +222,7 @@ body {
   height: auto;
   flex-shrink: 0;
   display: block;
-    padding: 0
+  padding: 0;
 }
 
 .para1,
