@@ -26,9 +26,35 @@ body {
   position: relative;
 }
 
+.canvas-container {
+  position: absolute;
+  inset: 0;              
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hand {
+  position: absolute;       
+  top: 50%;
+  width: clamp(140px, 40vw, 600px);
+  height: auto;
+  image-rendering: pixelated;
+  filter: grayscale(1) brightness(0.96);
+  will-change: transform;
+}
+
+.left-hand {
+  
+  left: 0;
+}
+
+.right-hand {
+  right: 0;
+}
+
 .btn {
   font-family: "Redaction 50", sans-serif;
-    font-weight: 400;
+  font-weight: 400;
   font-style: normal;
   width: 6.5em;
   height: 2.3em;
@@ -47,7 +73,7 @@ body {
 
 .btn1 {
   font-family: "Redaction 50", sans-serif;
-    font-weight: 400;
+  font-weight: 400;
   font-style: normal;
   width: 6.5em;
   height: 2.3em;
