@@ -7,8 +7,6 @@
 }
 
 html {
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
 }
 
@@ -40,9 +38,6 @@ body {
 .hand {
   position: absolute;
   width: clamp(140px, 40vw, 600px);
-  height: auto;
-  image-rendering: pixelated;
-  filter: grayscale(1) brightness(0.96);
   will-change: transform;
 }
 
@@ -52,6 +47,7 @@ body {
 }
 
 .right-hand {
+  margin-top: 5rem;
   right: 0;
 }
 
@@ -230,13 +226,13 @@ body {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
-.skill-container { 
+.skill-container {
   scroll-snap-align: start;
-    scroll-snap-stop: always;
-    min-height: 100dvh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+  scroll-snap-stop: always;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .card-container {

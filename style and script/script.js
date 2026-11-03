@@ -4,7 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     typeof ScrollTrigger === "undefined" ||
     typeof ScrambleTextPlugin === "undefined"
   ) {
-    console.error("Portfolio animations could not start: GSAP plugins are unavailable.");
+    console.error(
+      "Portfolio animations could not start: GSAP plugins are unavailable.",
+    );
     return;
   }
 
@@ -18,14 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const timeline = gsap.timeline();
+  const tl = gsap.timeline();
 
-  timeline
-    .from(".right-hand", {
-      duration: 2,
-      rotation: 45,
-      x: "100%",
-    })
+  tl.from(".right-hand", {
+    duration: 2,
+    rotation: 45,
+    x: "100%",
+  })
     .from(
       ".left-hand",
       {
@@ -35,6 +36,32 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "<",
     )
+
+    .call(() => {
+      gsap.set(".right-hand", { transformOrigin: "right center" });
+      gsap.set(".left-hand", { transformOrigin: "left center" });
+
+      gsap.to(".right-hand", {
+        x: 10,
+        y: -15,
+        rotation: 5,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+        delay: 0.5,
+      });
+      gsap.to(".left-hand", {
+        x: -10,
+        y: 15,
+        rotation: 5,
+        duration: 3,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    })
+
     .from(
       ".navbar .btn",
       {
@@ -76,15 +103,52 @@ document.addEventListener("DOMContentLoaded", () => {
       "-=0.6",
     );
 
+  const outroTl = gsap.timeline();
+
+  outroTl
+    .to(
+      ".right-hand",
+      {
+        xPercent: 110,
+        duration: 1,
+        ease: "none",
+      },
+      0,
+    )
+    .to(
+      ".left-hand",
+      {
+        xPercent: -110,
+        duration: 1,
+        ease: "none",
+      },
+      0,
+    )
+    .to(".navbar, .text", {
+      opacity: 0,
+      y: -30,
+      duration: 1,
+    }, 0);
+
+  ScrollTrigger.create({
+    trigger: ".top",
+    start: "top top",
+    end: "+=1200",
+    pin: true,
+    scrub: 1,
+    animation: outroTl,
+  });
+
   gsap.from(".card", {
-  scrollTrigger: {
-    trigger: ".card-container",
-    toggleActions: "play reverse play reverse"
-  },
-  y: "250",
-  opacity: "0",
-  stagger : "0.3"
-})
+    scrollTrigger: {
+      trigger: ".card-container",
+      toggleActions: "play reverse play reverse",
+    },
+    y: "250",
+    duration: 1.5,
+    opacity: "0",
+    stagger: "0.3",
+  });
 
   gsap.from(".icon", {
     scrollTrigger: {
@@ -114,7 +178,9 @@ document.addEventListener("DOMContentLoaded", () => {
     VanillaTilt.init(document.querySelectorAll(".card"));
   }
 
-  window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+  window.addEventListener("load", () => ScrollTrigger.refresh(), {
+    once: true,
+  });
   if (document.fonts) {
     document.fonts.ready.then(() => ScrollTrigger.refresh());
   }
