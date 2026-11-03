@@ -92,8 +92,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       trigger: ".abt-section1",
       toggleActions: "play reverse play reverse",
     },
-    x: "-150",
-    duration: "1",
+    x: "-100%",
+    duration: "1.5",
     ease: "expo.out",
   });
 
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       trigger: ".abt-section1",
       toggleActions: "play reverse play reverse",
     },
-    x: "-150",
+    x: "-100%",
     duration: "1",
     ease: "expo.out",
     delay: 0.1

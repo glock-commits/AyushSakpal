@@ -23,7 +23,9 @@ body {
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
-  height: 100svh;
+  min-height: 100svh;
+  height: 100dvh;
+  max-height: 100lvh;
   width: 100%;
   position: relative;
 }
@@ -144,7 +146,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  min-height: 5dvh;
+  height: auto;
   flex: 0 0 auto;
 }
 
@@ -155,7 +157,7 @@ body {
   align-content: center;
   justify-content: center;
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: 95svh;
 }
 
 .text {
@@ -166,7 +168,6 @@ body {
 .text h1 {
   text-align: start;
   font-size: clamp(1.8rem, 6vw, 4.2rem);
-  animation: slideLeft 1s ease-in-out;
   letter-spacing: -0.02em;
   overflow-wrap: break-word;
 }
@@ -177,7 +178,6 @@ body {
   margin-left: auto;
   font-size: clamp(1rem, 1.8vw, 1.4rem);
   line-height: 1.7;
-  animation: slideRight 1s cubic-bezier(0.83, -0.06, 0.4, 0.97);
 }
 
 .abt-section h1 {
@@ -191,6 +191,8 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100svh;
+  height: 100dvh;
+  max-height: 100lvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -203,6 +205,8 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100svh;
+  height: 100dvh;
+  max-height: 100lvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -236,6 +240,8 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100svh;
+  height: 100dvh;
+  max-height: 100lvh;
   display: flex;
   align-items: center;
 }
@@ -308,6 +314,8 @@ body {
 
 .contact {
   min-height: 100svh;
+  height: 100dvh;
+  max-height: 100lvh;
   align-items: center;
   justify-content: center;
   display: flex;
@@ -364,6 +372,6 @@ body {
   }
 
   .navbar {
-    min-height: 10dvh;
+    min-height: auto;
   }
 }
