@@ -23,9 +23,7 @@ body {
   scroll-snap-stop: always;
   display: flex;
   flex-direction: column;
-  min-height: 100svh;
-  height: 100dvh;
-  max-height: 100lvh;
+  height: 100lvh;
   width: 100%;
   position: relative;
 }
@@ -190,9 +188,7 @@ body {
 .abt-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 100svh;
-  height: 100dvh;
-  max-height: 100lvh;
+  min-height: 100lvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -204,9 +200,7 @@ body {
 .abt-section1 {
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 100svh;
-  height: 100dvh;
-  max-height: 100lvh;
+  height: 100lvh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -236,14 +230,13 @@ body {
   font-size: clamp(1.2rem, 2.5vw, 2rem);
 }
 
-.skill-container {
+.skill-container { 
   scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100svh;
-  height: 100dvh;
-  max-height: 100lvh;
-  display: flex;
-  align-items: center;
+    scroll-snap-stop: always;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
 }
 
 .card-container {
@@ -258,10 +251,9 @@ body {
 .card {
   transform-style: preserve-3d;
   will-change: transform;
-  margin-top: 2rem;
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex: 1 1 30vh;
   border: 2px solid #1a1a1a;
   border-radius: 1.5rem;
   background: #ffffff;
@@ -313,9 +305,7 @@ body {
 }
 
 .contact {
-  min-height: 100svh;
-  height: 100dvh;
-  max-height: 100lvh;
+  height: 100lvh;
   align-items: center;
   justify-content: center;
   display: flex;

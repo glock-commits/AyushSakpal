@@ -1,40 +1,42 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  await document.fonts.ready;
+document.addEventListener("DOMContentLoaded", () => {
+  if (
+    typeof gsap === "undefined" ||
+    typeof ScrollTrigger === "undefined" ||
+    typeof ScrambleTextPlugin === "undefined"
+  ) {
+    console.error("Portfolio animations could not start: GSAP plugins are unavailable.");
+    return;
+  }
 
-  gsap.registerPlugin(
-    CustomEase,
-    ScrollTrigger,
-    ScrollToPlugin,
-    TextPlugin,
-    SplitText,
-    ScrambleTextPlugin
-  );
+  gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
-  let splitH1 = new SplitText(".text h1", { type: "chars" });
-  let splitP = new SplitText(".text p", { type: "chars" });
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
-  gsap.ticker.lagSmoothing(0);
+  if (reducedMotion) {
+    return;
+  }
 
-  const tl = gsap.timeline();
+  const timeline = gsap.timeline();
 
-  tl.from(".right-hand", {
-    duration: 2,
-    rotation: "45",
-    x: "100%",
-  })
-
+  timeline
+    .from(".right-hand", {
+      duration: 2,
+      rotation: 45,
+      x: "100%",
+    })
     .from(
       ".left-hand",
       {
         duration: 2,
-        rotation: "-45",
+        rotation: -45,
         x: "-100%",
       },
       "<",
     )
-
     .from(
-      ".btn",
+      ".navbar .btn",
       {
         duration: 1.5,
         opacity: 0,
@@ -42,9 +44,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
       "<",
     )
-
     .from(
-      ".btn1",
+      ".navbar .btn1",
       {
         duration: 1.5,
         opacity: 0,
@@ -52,7 +53,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
       "<",
     )
-
     .to(".text h1", {
       duration: 1,
       scrambleText: {
@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         revealDelay: 0.1,
       },
     })
-
     .to(
       ".text p",
       {
@@ -78,35 +77,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     );
 
   gsap.from(".card", {
-    scrollTrigger: {
-      trigger: ".card-container",
-      toggleActions: "play reverse play reverse",
-    },
-    y: "250",
-    opacity: "0",
-    stagger: "0.3",
-  });
+  scrollTrigger: {
+    trigger: ".card-container",
+    toggleActions: "play reverse play reverse"
+  },
+  y: "250",
+  opacity: "0",
+  stagger : "0.3"
+})
 
   gsap.from(".icon", {
     scrollTrigger: {
-      trigger: ".abt-section1",
+      trigger: ".icon",
       toggleActions: "play reverse play reverse",
     },
     x: "-100%",
-    duration: "1.5",
+    duration: 1.5,
     ease: "expo.out",
   });
 
   gsap.from(".hab", {
     scrollTrigger: {
-      trigger: ".abt-section1",
+      trigger: ".icon",
       toggleActions: "play reverse play reverse",
     },
     x: "-100%",
-    duration: "1",
+    duration: 1,
     ease: "expo.out",
-    delay: 0.1
+    delay: 0.1,
   });
 
-  VanillaTilt.init(document.querySelectorAll(".card"));
+  if (
+    window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+    typeof VanillaTilt !== "undefined"
+  ) {
+    VanillaTilt.init(document.querySelectorAll(".card"));
+  }
+
+  window.addEventListener("load", () => ScrollTrigger.refresh(), { once: true });
+  if (document.fonts) {
+    document.fonts.ready.then(() => ScrollTrigger.refresh());
+  }
 });
