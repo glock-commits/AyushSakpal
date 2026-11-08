@@ -1,16 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (
-    typeof gsap === "undefined" ||
-    typeof ScrollTrigger === "undefined" ||
-    typeof ScrambleTextPlugin === "undefined"
-  ) {
-    console.error(
-      "Portfolio animations could not start: GSAP plugins are unavailable.",
-    );
-    return;
-  }
 
-  gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+  gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin, DrawSVGPlugin);
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)",
@@ -33,6 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 2,
         rotation: -45,
         x: "-100%",
+      },
+      "<",
+    )
+
+    .from(
+      ".btn, .btn1",
+      {
+        duration: 2.5,
+        y: "-100%",
+        ease: "expo.out",
       },
       "<",
     )
@@ -62,24 +62,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     })
 
-    .from(
-      ".navbar .btn",
-      {
-        duration: 1.5,
-        opacity: 0,
-        ease: "expo.out",
-      },
-      "<",
-    )
-    .from(
-      ".navbar .btn1",
-      {
-        duration: 1.5,
-        opacity: 0,
-        ease: "expo.out",
-      },
-      "<",
-    )
     .to(".text h1", {
       duration: 1,
       scrambleText: {
@@ -110,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ".right-hand",
       {
         xPercent: 110,
-        duration: 1,
+        duration: 1.5,
         ease: "none",
       },
       0,
@@ -119,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       ".left-hand",
       {
         xPercent: -110,
-        duration: 1,
+        duration: 1.5,
         ease: "none",
       },
       0,
@@ -128,12 +110,11 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 0,
       y: -30,
       duration: 1,
-    }, 0);
-
+    }, 0)
   ScrollTrigger.create({
     trigger: ".top",
     start: "top top",
-    end: "+=1200",
+    end: "150%",
     pin: true,
     scrub: 1,
     animation: outroTl,
@@ -150,26 +131,51 @@ document.addEventListener("DOMContentLoaded", () => {
     stagger: "0.3",
   });
 
-  gsap.from(".icon", {
+  const drawTl = gsap.timeline({
     scrollTrigger: {
-      trigger: ".icon",
-      toggleActions: "play reverse play reverse",
-    },
-    x: "-100%",
-    duration: 1.5,
-    ease: "expo.out",
+      trigger: ".abt-section1",
+      start: "top top",
+      end: "+=350%",
+      pin: true,
+      scrub: 1,  
+    }
   });
 
-  gsap.from(".hab", {
-    scrollTrigger: {
-      trigger: ".icon",
-      toggleActions: "play reverse play reverse",
-    },
-    x: "-100%",
+  drawTl.from(".fucking-box path", {
+    drawSVG: "0%", 
     duration: 1,
-    ease: "expo.out",
-    delay: 0.1,
+    ease: "power2.inOut",   
+  })
+  .to(".hab", {
+      duration: 1,
+      scrambleText: {
+        text: "About HIM",
+        chars: "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ",
+        speed: 0.5,
+        revealDelay: 0.1,
+      },
+}, "<")
+.fromTo(".icon", 
+  {
+    opacity: 0,
+    filter: "blur(50px) contrast(1)",
+  },
+  {
+    opacity: 1,
+    filter: "blur(0px) contrast(1)",
+    duration: 0.5,
+    ease: "power2.inOut",
+  }, "<"
+)
+.to(".abt-section1", {
+    scale: 0.3,
+    opacity: 0,            
+    filter: "blur(10px)", 
+    transformOrigin: "center center", 
+    duration: 1.5,
+    ease: "power2.inOut",
   });
+
 
   if (
     window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
