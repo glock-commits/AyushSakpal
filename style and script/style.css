@@ -24,6 +24,7 @@ body {
   height: 100lvh;
   width: 100%;
   position: relative;
+  overflow: clip;
 }
 
 .canvas-container {
@@ -226,6 +227,7 @@ body {
 .hab {
   font-size: clamp(2rem, 4vw, 4rem);
   line-height: 1.1;
+  min-height: 1.1em;
   text-align: center;
 }
 

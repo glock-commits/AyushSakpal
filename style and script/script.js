@@ -1,14 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
   gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin, DrawSVGPlugin);
-
-  const reducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)",
-  ).matches;
-
-  if (reducedMotion) {
-    return;
-  }
 
   const tl = gsap.timeline();
 
@@ -106,11 +97,16 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       0,
     )
-    .to(".navbar, .text", {
-      opacity: 0,
-      y: -30,
-      duration: 1,
-    }, 0)
+    .to(
+      ".navbar, .text",
+      {
+        opacity: 0,
+        y: -30,
+        duration: 1,
+      },
+      0,
+    );
+
   ScrollTrigger.create({
     trigger: ".top",
     start: "top top",
@@ -131,51 +127,56 @@ document.addEventListener("DOMContentLoaded", () => {
     stagger: "0.3",
   });
 
-  const drawTl = gsap.timeline({
+  const aboutTl = gsap.timeline({
     scrollTrigger: {
       trigger: ".abt-section1",
       start: "top top",
-      end: "+=350%",
+      end: "+=250%",
       pin: true,
-      scrub: 1,  
-    }
+      scrub: true,
+    },
   });
 
-  drawTl.from(".fucking-box path", {
-    drawSVG: "0%", 
-    duration: 1,
-    ease: "power2.inOut",   
-  })
-  .to(".hab", {
-      duration: 1,
-      scrambleText: {
-        text: "About HIM",
-        chars: "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ",
-        speed: 0.5,
-        revealDelay: 0.1,
+  aboutTl
+  .to(
+      ".hab",
+      {
+        duration: 1.5,
+        scrambleText: {
+          text: "About HIM",
+          chars: "αβγδεζηθικλμνξοπρστυφχψω",
+          speed: 0.3,
+          revealDelay: 0,
+        },
       },
-}, "<")
-.fromTo(".icon", 
-  {
-    opacity: 0,
-    filter: "blur(50px) contrast(1)",
-  },
-  {
-    opacity: 1,
-    filter: "blur(0px) contrast(1)",
-    duration: 0.5,
-    ease: "power2.inOut",
-  }, "<"
-)
-.to(".abt-section1", {
-    scale: 0.3,
-    opacity: 0,            
-    filter: "blur(10px)", 
-    transformOrigin: "center center", 
-    duration: 1.5,
-    ease: "power2.inOut",
-  });
-
+    )
+    .from(".fucking-box path", {
+      drawSVG: "0%",
+      duration: 1.5,
+      ease: "power2.out",
+    }, "<")
+    .fromTo(
+      ".icon",
+      {
+        opacity: 0,
+        filter: "blur(50px) contrast(1)",
+      },
+      {
+        opacity: 1,
+        filter: "blur(0px) contrast(1)",
+        duration: 0.5,
+        ease: "power2.out",
+      },
+      "<",
+    )
+     .to(".abt-section1", {
+      scale: 0.1,
+      opacity: 0,            
+      filter: "blur(10px)", 
+      transformOrigin: "center center", 
+      duration: 1.5,
+      ease: "power2.inOut",
+    });
 
   if (
     window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
